@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QMenu, QMenuBar, QAction, QToolBar, QDockWidget, QListWidget,
                              QTableWidget, QVBoxLayout, QWidget, QStatusBar)
 from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import Qt
 
 
 class MainWindow(QMainWindow):
