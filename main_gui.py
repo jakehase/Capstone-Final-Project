@@ -23,6 +23,8 @@ class MainWindow(QMainWindow):
         gdf = data_processing.read_shapefile(file_name)
         # Perform cleaning and manipulation operations on the GeoDataFrame here
 
+  import_csv_action.triggered.connect(self.import_csv)
+  import_shapefile_action.triggered.connect(self.import_shapefile)
   
     def __init__(self):
         super(MainWindow, self).__init__()
