@@ -12,6 +12,53 @@ Thorough project management:
 
 3)  Design the GUI: Sketch out a simple and user-friendly design for your GUI. You can use a pen and paper or a digital design tool. Consider which features you want to include, such as buttons for importing files, options for data manipulation, and visualization tools.
 
+GUI Text Sketch:
+
+Main Window:
+
+  Title: "QGIS Data Import and Visualization Tool"
+  Window dimensions: 800x600 pixels (adjustable)
+  
+Menu Bar:
+
+  File:
+    Import CSV
+    Import Shapefile
+    Export Project
+    Exit
+  Edit:
+    Data Cleaning Options
+    Data Manipulation Options
+  View:
+    Map Preview
+    Layer Styles
+  Help:
+    User Guide
+    About
+  Toolbar:
+
+    Import CSV button (icon)
+    Import Shapefile button (icon)
+    Zoom In button (icon)
+    Zoom Out button (icon)
+    Pan button (icon)
+    Full Extent button (icon)
+  Dock Widgets:
+
+      Layers Dock:
+        List of imported layers with checkboxes to toggle visibility
+      Buttons: Add Layer, Remove Layer, Move Up, Move Down
+      Attributes Dock:
+        Table showing attribute data for the selected layer
+      Buttons: Add Column, Remove Column, Edit Column
+      Central Widget:
+
+        Map canvas for displaying and interacting with the imported data
+      Coordinates display: Show the current mouse coordinates in the status bar
+      Status Bar:
+
+        Show messages or progress when loading data, performing operations, or reporting errors
+
 4)  Choose a GUI library: Research and choose a suitable Python library for creating the GUI. Some popular options are PyQt, Tkinter, and Kivy. Pick one that works well with QGIS and fits your requirements.
 
 5)  Learn the chosen GUI library: Familiarize yourself with the chosen GUI library by following tutorials and reading documentation. Practice creating simple applications to understand the basics.
