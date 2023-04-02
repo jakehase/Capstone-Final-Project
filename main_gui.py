@@ -7,6 +7,23 @@ import data_processing
 
 
 class MainWindow(QMainWindow):
+  
+  def import_csv(self):
+    options = QFileDialog.Options()
+    file_name, _ = QFileDialog.getOpenFileName(self, "Import CSV", "", "CSV Files (*.csv);;All Files (*)", options=options)
+    
+    if file_name:
+        df = data_processing.read_csv(file_name)
+        # Perform cleaning and manipulation operations on the DataFrame here
+  def import_shapefile(self):
+    options = QFileDialog.Options()
+    file_name, _ = QFileDialog.getOpenFileName(self, "Import Shapefile", "", "Shapefile (*.shp);;All Files (*)", options=options)
+    
+    if file_name:
+        gdf = data_processing.read_shapefile(file_name)
+        # Perform cleaning and manipulation operations on the GeoDataFrame here
+
+  
     def __init__(self):
         super(MainWindow, self).__init__()
 
