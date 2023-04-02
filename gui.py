@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import (QMainWindow, QApplication, QMenu, QMenuBar, QAction
                              QTableWidget, QVBoxLayout, QWidget, QStatusBar)
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
+import data_processing
 
 
 class MainWindow(QMainWindow):
