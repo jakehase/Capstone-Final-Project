@@ -1,31 +1,13 @@
 import sys
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QMenu, QMenuBar, QAction, QToolBar, QDockWidget, QListWidget,
-                             QTableWidget, QVBoxLayout, QWidget, QStatusBar)
+                             QTableWidget, QVBoxLayout, QWidget, QStatusBar, QFileDialog)
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 import data_processing
 
 
 class MainWindow(QMainWindow):
-  
-  def import_csv(self):
-    options = QFileDialog.Options()
-    file_name, _ = QFileDialog.getOpenFileName(self, "Import CSV", "", "CSV Files (*.csv);;All Files (*)", options=options)
-    
-    if file_name:
-        df = data_processing.read_csv(file_name)
-        # Perform cleaning and manipulation operations on the DataFrame here
-  def import_shapefile(self):
-    options = QFileDialog.Options()
-    file_name, _ = QFileDialog.getOpenFileName(self, "Import Shapefile", "", "Shapefile (*.shp);;All Files (*)", options=options)
-    
-    if file_name:
-        gdf = data_processing.read_shapefile(file_name)
-        # Perform cleaning and manipulation operations on the GeoDataFrame here
 
-  import_csv_action.triggered.connect(self.import_csv)
-  import_shapefile_action.triggered.connect(self.import_shapefile)
-  
     def __init__(self):
         super(MainWindow, self).__init__()
 
@@ -38,20 +20,41 @@ class MainWindow(QMainWindow):
         self.init_status_bar()
         self.show()
 
+    def import_csv(self):
+        options = QFileDialog.Options()
+        file_name, _ = QFileDialog.getOpenFileName(self, "Import CSV", "", "CSV Files (*.csv);;All Files (*)", options=options)
+
+        if file_name:
+            df = data_processing.read_csv(file_name)
+            df_cleaned = data_processing.clean_missing_values(df, method='drop')
+            # Perform additional cleaning and manipulation operations on the DataFrame here
+
+    def import_shapefile(self):
+        options = QFileDialog.Options()
+        file_name, _ = QFileDialog.getOpenFileName(self, "Import Shapefile", "", "Shapefile (*.shp);;All Files (*)", options=options)
+
+        if file_name:
+            gdf = data_processing.read_shapefile(file_name)
+            # Perform cleaning and manipulation operations on the GeoDataFrame here
+
     def init_menu_bar(self):
-        menu_bar = QMenuBar(self)
+      menu_bar = QMenuBar(self)
 
-        file_menu = QMenu("File", self)
-        edit_menu = QMenu("Edit", self)
-        view_menu = QMenu("View", self)
-        help_menu = QMenu("Help", self)
+      file_menu = QMenu("File", self)
+      edit_menu = QMenu("Edit", self)
+      view_menu = QMenu("View", self)
+      help_menu = QMenu("Help", self)
 
-        import_csv_action = QAction("Import CSV", self)
-        import_shapefile_action = QAction("Import Shapefile", self)
-        export_project_action = QAction("Export Project", self)
-        exit_action = QAction("Exit", self)
+      import_csv_action = QAction("Import CSV", self)
+      import_shapefile_action = QAction("Import Shapefile", self)
+      export_project_action = QAction("Export Project", self)
+      exit_action = QAction("Exit", self)
 
-        file_menu.addActions([import_csv_action, import_shapefile_action, export_project_action, exit_action])
+      import_csv_action.triggered.connect(self.import_csv)
+      import_shapefile_action.triggered.connect(self.import_shapefile)
+
+      file_menu.addActions([import_csv_action, import_shapefile_action, export_project_action, exit_action])
+
 
         data_cleaning_action = QAction("Data Cleaning Options", self)
         data_manipulation_action = QAction("Data Manipulation Options", self)
