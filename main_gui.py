@@ -38,22 +38,22 @@ class MainWindow(QMainWindow):
             # Perform cleaning and manipulation operations on the GeoDataFrame here
 
     def init_menu_bar(self):
-      menu_bar = QMenuBar(self)
+        menu_bar = QMenuBar(self)
 
-      file_menu = QMenu("File", self)
-      edit_menu = QMenu("Edit", self)
-      view_menu = QMenu("View", self)
-      help_menu = QMenu("Help", self)
+        file_menu = QMenu("File", self)
+        edit_menu = QMenu("Edit", self)
+        view_menu = QMenu("View", self)
+        help_menu = QMenu("Help", self)
 
-      import_csv_action = QAction("Import CSV", self)
-      import_shapefile_action = QAction("Import Shapefile", self)
-      export_project_action = QAction("Export Project", self)
-      exit_action = QAction("Exit", self)
+        import_csv_action = QAction("Import CSV", self)
+        import_shapefile_action = QAction("Import Shapefile", self)
+        export_project_action = QAction("Export Project", self)
+        exit_action = QAction("Exit", self)
 
-      import_csv_action.triggered.connect(self.import_csv)
-      import_shapefile_action.triggered.connect(self.import_shapefile)
+        import_csv_action.triggered.connect(self.import_csv)
+        import_shapefile_action.triggered.connect(self.import_shapefile)
 
-      file_menu.addActions([import_csv_action, import_shapefile_action, export_project_action, exit_action])
+        file_menu.addActions([import_csv_action, import_shapefile_action, export_project_action, exit_action])
 
 
         data_cleaning_action = QAction("Data Cleaning Options", self)
