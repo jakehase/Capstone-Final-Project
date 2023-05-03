@@ -1,19 +1,23 @@
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-def visualize_shapefile(gdf, column=None):
+
+def visualize_shapefile(file_path, column=None):
     """
-    Visualize a GeoDataFrame.
+    Load a shapefile from a file and visualize it.
 
     Parameters:
-    gdf (GeoDataFrame): The GeoDataFrame to visualize.
+    file_path (str): The path to the shapefile.
     column (str): The column to base the colors on.
 
     Returns:
     None
     """
+    # Load the shapefile into a GeoDataFrame
+    gdf = gpd.read_file(file_path)
+
     fig, ax = plt.subplots(figsize=(10, 10))
-    
+
     # If a column is provided, color the geometries based on the values in that column.
     # Otherwise, color all geometries the same.
     if column:
@@ -25,10 +29,3 @@ def visualize_shapefile(gdf, column=None):
     ax.set_axis_off()
 
     plt.show()
-
-if __name__ == "__main__":
-    # Load a shapefile into a GeoDataFrame
-    gdf = gpd.read_file('path_to_your_shapefile.shp')
-
-    # Visualize the GeoDataFrame
-    visualize_shapefile(gdf, column='category')
